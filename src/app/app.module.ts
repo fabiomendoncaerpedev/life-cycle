@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InputComponent } from './components/input/input.component';
 import { ItemComponent } from './components/item/item.component';
+import { ListaDeCompraService } from './service/lista-de-compra.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,9 @@ import { ItemComponent } from './components/item/item.component';
     BrowserModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [
+    ListaDeCompraService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

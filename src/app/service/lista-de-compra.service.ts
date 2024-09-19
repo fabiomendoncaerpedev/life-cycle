@@ -1,9 +1,7 @@
 import { Item } from 'src/app/interfaces/iItem';
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ListaDeCompraService {
 
   private listaDeCompra: Item[] = [
@@ -31,7 +29,7 @@ export class ListaDeCompraService {
     console.log('Instanciando dependências necessárias para o serviço.');
   }
 
-  getListaDeCompra(){
+  getListaDeCompra(): Array<Item> {
     return this.listaDeCompra;
   }
 }
