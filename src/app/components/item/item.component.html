@@ -16,7 +16,8 @@
   *ngIf="!item.comprado">
   <fa-icon
     class="delete-icon"
-    [icon]="faTrash">
+    [icon]="faTrash"
+    (click)="deletarItem()">
   </fa-icon>
   <fa-icon
     class="edit-icon"

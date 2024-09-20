@@ -28,4 +28,12 @@ export class AppComponent implements OnInit, DoCheck {
   editarItem(item: Item) {
     this.itemParaSerEditado = item;
   }
+
+  excluirItem(item: Item) {
+    this.listaDeCompras.splice(this.listaDeCompras.indexOf(item), 1);
+  }
+
+  limparLista() {
+    this.listaDeCompras = [];
+  }
 }

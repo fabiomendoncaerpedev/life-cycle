@@ -1,5 +1,5 @@
 import { ListaDeCompraService } from './../../service/lista-de-compra.service';
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Item } from 'src/app/interfaces/iItem';
 
@@ -8,10 +8,11 @@ import { Item } from 'src/app/interfaces/iItem';
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css']
 })
-export class ItemComponent implements OnInit, OnChanges {
+export class ItemComponent implements OnChanges, OnDestroy {
 
   @Input() item!: Item;
   @Output() emitindoItemParaEditar = new EventEmitter()
+  @Output() emitindoItemParaExcluir = new EventEmitter()
   faPen = faPen;
   faTrash = faTrash
 
@@ -19,7 +20,8 @@ export class ItemComponent implements OnInit, OnChanges {
     private listaDeCompraService: ListaDeCompraService
   ) { }
 
-  ngOnInit(): void {
+  ngOnDestroy(): void {
+    console.log('conseguiram me calar')
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -32,6 +34,11 @@ export class ItemComponent implements OnInit, OnChanges {
   atualizarCheckBox() {
     this.item.comprado = !this.item.comprado;
     this.listaDeCompraService.editarItemDaLista(this.item);
+  }
+
+  deletarItem() {
+    console.log('estao tentando me calar')
+    this.emitindoItemParaExcluir.emit(this.item);
   }
 
 }
