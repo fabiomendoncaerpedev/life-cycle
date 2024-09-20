@@ -1,3 +1,4 @@
+import { ListaDeCompraService } from './../../service/lista-de-compra.service';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Item } from 'src/app/interfaces/iItem';
@@ -14,7 +15,9 @@ export class ItemComponent implements OnInit, OnChanges {
   faPen = faPen;
   faTrash = faTrash
 
-  constructor() { }
+  constructor(
+    private listaDeCompraService: ListaDeCompraService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +27,11 @@ export class ItemComponent implements OnInit, OnChanges {
 
   editarItem() {
     this.emitindoItemParaEditar.emit(this.item);
+  }
+
+  atualizarCheckBox() {
+    this.item.comprado = !this.item.comprado;
+    this.listaDeCompraService.editarItemDaLista(this.item);
   }
 
 }

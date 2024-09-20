@@ -1,14 +1,23 @@
 <input
-  class="checkbox"
+  class = 'checkbox'
   type="checkbox"
   name="comprado"
   id="comprado"
-  [checked]="item.comprado">
-<p class="description">{{ item.nome }}</p>
+  [checked]="item.comprado"
+  (click)="atualizarCheckBox()">
+<p
+  [class]="{
+    'description': true,
+    'line-through': item.comprado
+  }">{{ item.nome }}
+</p>
 <div
   class="d-contents"
   *ngIf="!item.comprado">
-  <fa-icon class="delete-icon" [icon]="faTrash" ></fa-icon>
+  <fa-icon
+    class="delete-icon"
+    [icon]="faTrash">
+  </fa-icon>
   <fa-icon
     class="edit-icon"
     [icon]="faPen"

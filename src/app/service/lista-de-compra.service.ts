@@ -20,10 +20,12 @@ export class ListaDeCompraService {
     this.listaDeCompra.push(item);
   }
 
-  editarItemDaLista(itemAntigo: Item, nomeEditadoDoItem: string) {
+  editarItemDaLista(itemAntigo: Item, nomeEditadoDoItem?: string) {
     const itemEditado: Item = {
       id: itemAntigo.id,
-      nome: nomeEditadoDoItem,
+      nome: nomeEditadoDoItem
+        ? nomeEditadoDoItem
+        : itemAntigo.nome,
       data: itemAntigo.data,
       comprado: itemAntigo.comprado
     }
@@ -46,4 +48,5 @@ export class ListaDeCompraService {
 
     return item;
   }
+
 }
